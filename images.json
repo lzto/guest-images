@@ -16,7 +16,7 @@
         "binary_formats": ["elf"]
       },
       "hw": {
-        "default_disk_size": "4G",
+        "default_disk_size": "40G",
         "default_snapshot_size": "256M",
         "nic": "e1000"
       }
@@ -38,7 +38,7 @@
         "binary_formats": ["decree"]
       },
       "hw": {
-        "default_disk_size": "4G",
+        "default_disk_size": "40G",
         "default_snapshot_size": "256M",
         "nic": "e1000"
       }
@@ -60,7 +60,7 @@
         "binary_formats": ["elf"]
       },
       "hw": {
-        "default_disk_size": "4G",
+        "default_disk_size": "40G",
         "default_snapshot_size": "256M",
         "nic": "e1000"
       }
@@ -84,7 +84,7 @@
         "binary_formats": ["pe"]
       },
       "hw": {
-        "default_disk_size": "8G",
+        "default_disk_size": "80G",
         "default_snapshot_size": "256M",
         "nic": "pcnet",
         "cpu": "core2duo"
@@ -109,7 +109,7 @@
        "binary_formats": ["pe"]
       },
       "hw": {
-        "default_disk_size": "30G",
+        "default_disk_size": "100G",
         "default_snapshot_size": "2G",
         "nic": "e1000",
         "cpu": "core2duo"
@@ -135,7 +135,7 @@
        "binary_formats": ["pe"]
       },
       "hw": {
-        "default_disk_size": "30G",
+        "default_disk_size": "100G",
         "default_snapshot_size": "2G",
         "nic": "e1000",
         "cpu": "core2duo"
@@ -160,7 +160,7 @@
         "binary_formats": ["pe"]
       },
       "hw": {
-        "default_disk_size": "30G",
+        "default_disk_size": "100G",
         "default_snapshot_size": "2G",
         "nic": "e1000",
         "cpu": "core2duo"
@@ -184,7 +184,7 @@
         "binary_formats": ["pe"]
       },
       "hw": {
-        "default_disk_size": "30G",
+        "default_disk_size": "100G",
         "default_snapshot_size": "2G",
         "nic": "e1000",
         "cpu": "core2duo"
@@ -210,7 +210,7 @@
         "binary_formats": ["pe"]
       },
       "hw": {
-        "default_disk_size": "30G",
+        "default_disk_size": "100G",
         "default_snapshot_size": "2G",
         "nic": "e1000",
         "cpu": "core2duo"
