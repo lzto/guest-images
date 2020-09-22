@@ -53,12 +53,20 @@ fi
 groupadd -g $MGID s2e
 useradd -u $MUID -g s2e s2e
 
+#install dependencies 
+sudo apt-get update
+sudo apt-get install -y libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf
+
+JOBS=`getconf _NPROCESSORS_ONLN`
+
 # Run the rest of the script with the uid/gid provided, otherwise
 # new files will be owned by root.
 exec sudo -u s2e /bin/bash - << EOF
 set -x
 
-export C_INCLUDE_PATH=${1}:${C_INCLUDE_PATH}
+# C_INCLUDE_PATH breaks objtool build
+#export C_INCLUDE_PATH=${1}:${C_INCLUDE_PATH}
+cp -rv ${1}/* include/
 
 if [ ! -e .config ]; then
     echo "No .config - generating the default config"
@@ -75,7 +83,7 @@ if ! echo $VERSION | grep -q 3.13.11; then
     TARGET=deb-pkg
 fi
 
-fakeroot make -j8 \$TARGET LOCALVERSION=-s2e || err "Build failed"
+fakeroot make -j${JOBS} \$TARGET LOCALVERSION=-s2e || err "Build failed"
 
 # Restore access to files under version control
 chmod a+rw debian
