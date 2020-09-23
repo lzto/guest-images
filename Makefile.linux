@@ -62,6 +62,7 @@ define TEMPLATE_BASE_LINUX_IMAGE
 	# kernel may not support the required CPU flags (e.g., pentium,-nommx).
 	# The custom S2E kernel will work though.
 	$(QEMU64) -m 1G -no-reboot $(GRAPHICS) $(QEMU_KVM) \
+			$(QEMU_SMP) \
 	    $(call QEMU_HD,0,$$@) \
 	    -cdrom $(TMPDIR)/$1/install_files.iso \
 	    -serial file:$(TMPDIR)/$1/serial.txt
@@ -88,6 +89,7 @@ define BUILD_S2E_IMAGE
 
 	$(call INFO_MSG,[$$@] Booting disk image...)
 	$(QEMU64) -m 1G -no-reboot $(GRAPHICS) $(QEMU_KVM) \
+		  $(QEMU_SMP) \
 	    $(call QEMU_HD,0,$$@) \
 	    -serial file:$(OUTDIR)/$2$1/serial.txt
 

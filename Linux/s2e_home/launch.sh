@@ -50,7 +50,8 @@ install_systemtap() {
     mkdir systemtap-build
     cd systemtap-build
     ../systemtap/configure --disable-docs
-    make -j2
+    JOBS=`getconf _NPROCESSORS_ONLN`
+    make -j$JOBS
     sudo make install
     cd ..
 }
