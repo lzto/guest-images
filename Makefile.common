@@ -43,6 +43,8 @@ QEMU_KVM ?= -enable-kvm
 # use multiple cores to speedup image build
 QEMU_SMP ?= -smp $(shell getconf _NPROCESSORS_ONLN)
 
+QEMU_MEM_SIZE ?= 4G
+
 # Where to store final images
 OUTDIR ?= $(shell pwd)/output
 
