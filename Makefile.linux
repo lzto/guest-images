@@ -20,8 +20,8 @@
 
 ### Check that required variables are setup properly
 
-ifeq ("$(wildcard $(S2E_LINUX_KERNELS_ROOT)/linux-4.9.240/config-i386)","")
-$(error $(S2E_LINUX_KERNELS_ROOT)/linux-4.9.240/config-i386 does not exist. Make sure S2E_LINUX_KERNELS_ROOT is set properly)
+ifeq ("$(wildcard $(S2E_LINUX_KERNELS_ROOT)/linux-5.14.2/config-x86_64)","")
+$(error $(S2E_LINUX_KERNELS_ROOT)/linux-5.14.2/config-i386 does not exist. Make sure S2E_LINUX_KERNELS_ROOT is set properly)
 endif
 
 
@@ -180,7 +180,8 @@ endef
 
 
 ### Instantiating all build configurations ###
-LINUX_IMAGES = debian-9.2.1-i386 debian-9.2.1-x86_64 cgc_debian-9.2.1-i386
+#LINUX_IMAGES = debian-9.2.1-i386 debian-9.2.1-x86_64 cgc_debian-9.2.1-i386
+LINUX_IMAGES = debian-9.2.1-x86_64
 LINUX_ARCHIVES=$(addsuffix .tar.xz,$(addprefix $(OUTDIR)/,$(LINUX_IMAGES)))
 
 # The cgc linux image uses an existing base image
@@ -190,23 +191,24 @@ $(foreach os,$(LINUX_IMAGES), \
 )
 
 # Rules for building the kernels
-$(eval $(call TEMPLATE_LINUX_KERNEL,decree-cgc-cfe,i386))
-$(eval $(call TEMPLATE_LINUX_KERNEL,linux-4.9.240,i386))
-$(eval $(call TEMPLATE_LINUX_KERNEL,linux-4.9.240,x86_64))
+#$(eval $(call TEMPLATE_LINUX_KERNEL,decree-cgc-cfe,i386))
+#$(eval $(call TEMPLATE_LINUX_KERNEL,linux-4.9.240,i386))
+$(eval $(call TEMPLATE_LINUX_KERNEL,linux-5.14.2,x86_64))
 
 # Rules for building different images
 # TODO: cgc image is treated in an adhoc manner, try to factor it out somehow
-$(eval $(call BUILD_S2E_IMAGE,debian-9.2.1-i386,cgc_,decree-cgc-cfe-i386))
-$(eval $(call TAKE_SNAPSHOT,debian-9.2.1-i386,cgc_))
+#$(eval $(call BUILD_S2E_IMAGE,debian-9.2.1-i386,cgc_,decree-cgc-cfe-i386))
+#$(eval $(call TAKE_SNAPSHOT,debian-9.2.1-i386,cgc_))
 
-$(eval $(call BUILD_S2E_IMAGE,debian-9.2.1-i386,,linux-4.9.240-i386))
-$(eval $(call TAKE_SNAPSHOT,debian-9.2.1-i386,))
+#$(eval $(call BUILD_S2E_IMAGE,debian-9.2.1-i386,,linux-4.9.240-i386))
+#$(eval $(call TAKE_SNAPSHOT,debian-9.2.1-i386,))
 
-$(eval $(call BUILD_S2E_IMAGE,debian-9.2.1-x86_64,,linux-4.9.240-x86_64))
+$(eval $(call BUILD_S2E_IMAGE,debian-9.2.1-x86_64,,linux-5.14.2-x86_64))
 $(eval $(call TAKE_SNAPSHOT,debian-9.2.1-x86_64,))
 
 ### Top level rules ###
 
 linux: $(LINUX_IMAGES)
 linux_archives: $(LINUX_ARCHIVES)
-all-kernels: $(STAMPS)/decree-cgc-cfe-i386 $(STAMPS)/linux-4.9.240-i386 $(STAMPS)/linux-4.9.240-x86_64
+#all-kernels: $(STAMPS)/decree-cgc-cfe-i386 $(STAMPS)/linux-4.9.240-i386 $(STAMPS)/linux-4.9.240-x86_64
+all-kernels: $(STAMPS)/linux-5.14.2-x86_64
