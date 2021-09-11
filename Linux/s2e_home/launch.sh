@@ -32,7 +32,7 @@ install_i386() {
         sudo apt-get update
 
         # libelf is required for s2e.so
-        sudo apt-get -y install gcc-multilib g++-multilib libc6-dev-i386 lib32stdc++-6-dev libstdc++6:i386 \
+        sudo apt-get -y install gcc-multilib g++-multilib lib32stdc++-6  \
             libelf1:i386
     fi
 }
@@ -138,8 +138,8 @@ install_cgc_packages() {
 }
 
 sudo apt-get update
-install_i386
-install_systemtap
+#install_i386
+#install_systemtap
 
 # Install CGC tools if we have a CGC kernel
 if [ $(has_cgc_kernel) -eq 1 ]; then

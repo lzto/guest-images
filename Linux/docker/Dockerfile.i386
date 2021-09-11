@@ -22,7 +22,7 @@
 # Use it to compile the kernel
 # docker build -t linux-build-i386 -f Dockerfile.i386 .
 
-FROM i386/debian:9.3
+FROM i386/debian:11.0
 
 MAINTAINER Vitaly Chipounov <vitaly@cyberhaven.io>
 

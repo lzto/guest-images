@@ -55,7 +55,7 @@ useradd -u $MUID -g s2e s2e
 
 #install dependencies 
 sudo apt-get update
-sudo apt-get install -y libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf
+sudo apt-get install -y libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf cpio rsync
 
 JOBS=`getconf _NPROCESSORS_ONLN`
 
