@@ -30,7 +30,7 @@ SRC?=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 DEBUG_INTERMEDIATE_RULES ?=
 
 # Override these two variables with your actual settings
-S2E_INSTALL_ROOT ?=
+S2E_INSTALL_ROOT ?= 
 S2E_LINUX_KERNELS_ROOT ?=
 
 # Comment out this variable to enable graphic output
