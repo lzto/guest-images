@@ -66,12 +66,12 @@
       }
     },
 
-    "debian-11.0.0-x86_64": {
+    "debian-11.2.0-x86_64": {
       "name": "Debian x86_64 image",
       "image_group": "linux",
       "url": "https://localhost/",
       "iso": {
-        "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.0.0-amd64-netinst.iso"
+        "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.2.0-amd64-netinst.iso"
       },
       "os": {
         "name": "debian",
