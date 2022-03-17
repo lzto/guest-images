@@ -35,6 +35,7 @@ S2E_LINUX_KERNELS_ROOT ?=
 
 # Comment out this variable to enable graphic output
 GRAPHICS ?= -nographic -monitor null
+#GRAPHICS=-vnc :0
 
 # If your host does not support KVM, comment out this variable.
 # Image creation will take much longer.
@@ -87,7 +88,7 @@ GETLIBS2E = $(S2E_INSTALL_ROOT)/share/libs2e/libs2e-$(call OS_ARCH,$(1)).so
 QEMU_HD = -drive if=ide,index=$(1),file=$(2),format=raw,cache=writeback
 QEMU_HD_S2E = -drive if=ide,index=$(1),file=$(2),format=s2e,cache=writeback
 QEMU_CD = -drive if=ide,index=$(1),file=$(2),media=cdrom
-QEMU_NIC = -net none -net nic,model=$(1)
+QEMU_NIC = -net user -net nic,model=$(1)
 QEMU_CPU = $(if $(1),-cpu $(1))
 
 # This is used to create a variable name out of an image name and a suffix
